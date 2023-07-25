@@ -1,7 +1,7 @@
 
 
 import express from "express";
-let router = express.Router()
+const router = express.Router()
 
 // GET  /api/v1/post/:userId/:postId
 router.get('/post/:userId/:postId', (req, res, next) => {

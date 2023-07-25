@@ -30,7 +30,8 @@
         <h1><b>MY POST CRUD APP</b></h1>
     </header>
 
-    <div id="formContainer">
+    <button id="createPostBtn" class="createPostBtn">Create Post</button>
+    <div id="formContainer" class="formContainer">
         <form id="form" class="form">
             <label for="title">Title :</label>
             <input type="text" name="title" id="title" class="titleForm" placeholder="Enter Your Title" required>
@@ -39,13 +40,15 @@
             <input type="text" name="text" id="text" class="titleForm" placeholder="Enter Your Text" required>
             <br>
             <!-- <input type="submit" id="btn" class="btn"> -->
-            <button type="submit">Submit</button>
+            <button type="submit" id="btn">Submit</button>
         </form>
     </div>
 
     <br>
     <br>
 
+    
+    <section id="postContainer" class="postContainer"></section>
     <div id="editFormDiv" class="editFormDiv">
         <span class="cross" id="cross"><i class="bi bi-x-lg"></i></span>
         <form id="editForm" class="editForm">
@@ -58,12 +61,12 @@
                 required>
             <br>
             <!-- <input type="submit" id="editFormBtn" class="editFormEdit"> -->
-            <button type="submit">Submit</button>
+            <button type="submit" id="editFormBtn" class="editFormBtn">Submit</button>
         </form>
     </div>
 
-    <section id="postContainer" class="postContainer"></section>
-
+    <span id="alertBox" class="alertBox"></span>
+   
     <script type="module" src="app.js"></script>
     <!-- Axios Link -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>

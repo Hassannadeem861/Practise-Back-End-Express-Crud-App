@@ -10,19 +10,20 @@ import apiv2Router from "./apiv2/index.mjs"
 
 const app = express()
 const __dirname = path.resolve();
+const PORT = process.env.PORT || 3000
 app.use(express.json()); //body parse
 
 
 // app.use(authRouter)
-app.use("/api/v1/", apiv1Router)
-app.use("/api/v2/", apiv2Router)
+app.use("/api/v1/", apiv1)
+app.use("/api/v2/", apiv2)
 
 
 //    /static/vscode_windows,exe
 // app.use("/static", express.static(path.join(__dirname, "static")))
 
+
 app.use(express.static(path.join(__dirname, 'public')))
-const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Example server listening on port ${PORT}`)
 })

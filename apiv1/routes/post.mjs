@@ -3,6 +3,8 @@
 import express from "express";
 import { nanoid } from 'nanoid'
 const router = express.Router()
+const dateVar = JSON.stringify(new Date())
+const result = dateVar.slice(0, 11)
 
 // not recommended at all - server should be stateless
 let posts = [
@@ -33,7 +35,7 @@ router.post('/post', (req, res, next) => {
         return;
     }
 
-    posts.push({
+    posts.unshift({
 
         id: nanoid(),
         title: req.body.title,
@@ -41,7 +43,7 @@ router.post('/post', (req, res, next) => {
 
     })
 
-    res.send(`post Created ${new Date()}`)
+    res.send(`post Created at ${result}`)
 
 });
 
@@ -66,7 +68,7 @@ router.put('/post/:postId', (req, res, next) => {
         }
  
         if(isFound){
-            res.send("Post IUpdated successfully");
+            res.send("Post Updated successfully");
         }else{
             res.status(404).send("Not Found")
         }

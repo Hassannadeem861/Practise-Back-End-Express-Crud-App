@@ -1,7 +1,7 @@
 
       // MINI ROUTER  
  import express from "express";
- let router = express.Router()
+ const router = express.Router()
 
 //GET /api/feed/:userId
 router.get('/feed/:userId', (req, res, next) => {
