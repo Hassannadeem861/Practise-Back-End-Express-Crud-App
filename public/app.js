@@ -197,7 +197,7 @@ form.addEventListener("submit", (event) => {
     let title = document.querySelector("#title").value;
     let text = document.querySelector("#text").value;
 
-    axios.post('', {
+    axios.post('https://fantastic-bee-tweed-jacket.cyclic.app', {
 
         title: title,
         text: text
@@ -227,7 +227,7 @@ form.addEventListener("submit", (event) => {
 })
 
 window.addEventListener("load", () => {
-    axios.get('')
+    axios.get('https://fantastic-bee-tweed-jacket.cyclic.app')
 
         .then(function (response) {
 
@@ -288,7 +288,7 @@ window.addEventListener("load", () => {
 const deletePostData = (id) => {
 
     axios
-        .delete(`${id}`)
+        .delete(`https://fantastic-bee-tweed-jacket.cyclic.app${id}`)
         .then(function (response) {
             //   alert(response.data);
             Swal.fire({
@@ -328,7 +328,7 @@ const editPostFun = (id, title, text) => {
         event.preventDefault();
 
         axios
-            .put(`${id}`, {
+            .put(`https://fantastic-bee-tweed-jacket.cyclic.app${id}`, {
                 title: editFormTitle.value,
                 text: editFormText.value,
             })
