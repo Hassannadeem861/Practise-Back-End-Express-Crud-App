@@ -1,4 +1,216 @@
 
+const postContainer = document.getElementById("postContainer");
+const form = document.getElementById("form");
+
+form.addEventListener("submit", (event) => {
+
+    event.preventDefault()
+    let title = document.querySelector("#title").value;
+    let text = document.querySelector("#text").value;
+
+    axios.post('https://fantastic-bee-tweed-jacket.cyclic.app/api/v1/post', {
+
+        title: title,
+        text: text
+    })
+        .then(function (response) {
+            console.log(response.data);
+            form.reset();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'response.data',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        });
+
+})
+
+window.addEventListener("load", () => {
+    axios.get('https://fantastic-bee-tweed-jacket.cyclic.app/api/v1/posts')
+
+        .then(function (response) {
+
+            //handle success
+            const data = response.data
+
+            data.forEach((ele) => {
+
+                const post = document.createElement("div");
+                post.classList.add("post");
+
+                const title = document.createElement("div");
+                title.classList.add("title");
+                title.innerText = ele.title
+
+                const text = document.createElement("div");
+                text.classList.add("text");
+                text.innerText = ele.text
+
+                const btnDiv = document.createElement("div");
+                btnDiv.classList.add("btnDiv");
+
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("button");
+                deleteButton.innerText = "Delete"
+
+                const editButton = document.createElement("button");
+                editButton.classList.add("button")
+                editButton.innerText = "Edit"
+
+                btnDiv.appendChild(deleteButton)
+                btnDiv.appendChild(editButton)
+                post.appendChild(title)
+                post.appendChild(text)
+                post.appendChild(btnDiv)
+                postContainer.appendChild(post)
+
+                deleteButton.addEventListener("click", () => deletePostFun(ele.id));
+
+                editButton.addEventListener("click", () =>
+
+                    editPostFun(ele.id, ele.title, ele.text)
+
+                );
+                console.log(ele);
+
+                // });
+
+                // console.log(response.data);
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+
+const deletePostData = (id) => {
+
+    axios
+        .delete(`https://fantastic-bee-tweed-jacket.cyclic.app/api/v1/post${id}`)
+        .then(function (response) {
+            //   alert(response.data);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'response.data',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        });
+};
+
+
+const editPostFun = (id, title, text) => {
+
+    let editFormDiv = document.querySelector("editFormDiv");
+    editFormDiv.style.display = "block"
+    let editForm = document.querySelector("editForm");
+    let editFormTitle = document.querySelector("editFormTitle");
+    let editFormText = document.querySelector("editFormText");
+    editFormTitle.value = title
+    editFormText.value = text
+
+    editForm.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        axios
+            .put(`https://fantastic-bee-tweed-jacket.cyclic.app/api/v1/post${id}`, {
+                title: editFormTitle.value,
+                text: editFormText.value,
+            })
+            .then(function (response) {
+                // alert(response.data);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'response.data',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            });
+        editForm.reset();
+        editFormDiv.style.display = "none";
+
+    })
+}
+
+const cross = document.querySelector("#cross");
+cross.addEventListener("click", () => {
+    const editFormDiv = document.querySelector("#editFormDiv");
+    editFormDiv.style.display = "none";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const postContainer = document.getElementById("postContainer");
 // const form = document.getElementById("form");
 
@@ -176,193 +388,6 @@
 //     editFormDiv.style.display = "none";
 // });
 
-
-
-
-
-
-
-
-
-
-
-
-
-const postContainer = document.getElementById("postContainer");
-const form = document.getElementById("form");
-
-form.addEventListener("submit", (event) => {
-
-    event.preventDefault()
-    let title = document.querySelector("#title").value;
-    let text = document.querySelector("#text").value;
-
-    axios.post('https://fantastic-bee-tweed-jacket.cyclic.app', {
-
-        title: title,
-        text: text
-    })
-        .then(function (response) {
-            console.log(response.data);
-            form.reset();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'response.data',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        })
-        .catch(function (error) {
-            console.log(error);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        });
-
-})
-
-window.addEventListener("load", () => {
-    axios.get('https://fantastic-bee-tweed-jacket.cyclic.app')
-
-        .then(function (response) {
-
-            //handle success
-            const data = response.data
-
-            data.forEach((ele) => {
-
-                const post = document.createElement("div");
-                post.classList.add("post");
-
-                const title = document.createElement("div");
-                title.classList.add("title");
-                title.innerText = ele.title
-
-                const text = document.createElement("div");
-                text.classList.add("text");
-                text.innerText = ele.text
-
-                const btnDiv = document.createElement("div");
-                btnDiv.classList.add("btnDiv");
-
-                const deleteButton = document.createElement("button");
-                deleteButton.classList.add("button");
-                deleteButton.innerText = "Delete"
-
-                const editButton = document.createElement("button");
-                editButton.classList.add("button")
-                editButton.innerText = "Edit"
-
-                btnDiv.appendChild(deleteButton)
-                btnDiv.appendChild(editButton)
-                post.appendChild(title)
-                post.appendChild(text)
-                post.appendChild(btnDiv)
-                postContainer.appendChild(post)
-
-                deleteButton.addEventListener("click", () => deletePostFun(ele.id));
-
-                editButton.addEventListener("click", () =>
-
-                    editPostFun(ele.id, ele.title, ele.text)
-
-                );
-                console.log(ele);
-
-                // });
-
-                // console.log(response.data);
-            })
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-});
-
-
-const deletePostData = (id) => {
-
-    axios
-        .delete(`https://fantastic-bee-tweed-jacket.cyclic.app${id}`)
-        .then(function (response) {
-            //   alert(response.data);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'response.data',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        })
-        .catch(function (error) {
-            console.log(error);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-
-        });
-};
-
-
-const editPostFun = (id, title, text) => {
-
-    let editFormDiv = document.querySelector("editFormDiv");
-    editFormDiv.style.display = "block"
-    let editForm = document.querySelector("editForm");
-    let editFormTitle = document.querySelector("editFormTitle");
-    let editFormText = document.querySelector("editFormText");
-    editFormTitle.value = title
-    editFormText.value = text
-
-    editForm.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-        axios
-            .put(`https://fantastic-bee-tweed-jacket.cyclic.app${id}`, {
-                title: editFormTitle.value,
-                text: editFormText.value,
-            })
-            .then(function (response) {
-                // alert(response.data);
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'response.data',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            })
-            .catch(function (error) {
-                console.log(error);
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            });
-        editForm.reset();
-        editFormDiv.style.display = "none";
-
-    })
-}
-
-const cross = document.querySelector("#cross");
-cross.addEventListener("click", () => {
-    const editFormDiv = document.querySelector("#editFormDiv");
-    editFormDiv.style.display = "none";
-});
 
 
 
