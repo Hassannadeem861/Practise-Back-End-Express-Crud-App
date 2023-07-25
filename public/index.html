@@ -1,0 +1,77 @@
+<!-- <label> ke for attribute missing hain: <label> tag ke liye for attribute define karna chahiye taaki jab bhi koi label par click kare, uss field mein focus ho jaaye. Is code mein for attribute missing hai, isko sahi karna hai.
+ event argument missing hai function calls mein: onload="getAllPost(event)" aur onsubmit="createPost(event); return false" mein event argument missing hai. -->
+<!-- Is sahi kiye gaye code mein <label> ke for attribute ko postTitle aur postText fields ke saath set kiya gaya hai. Ab aapke web page par posts create karne aur dikhaane ka sahi tarika hona chahiye. -->
+
+
+<!-- CHATGPT CODE -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD APP</title>
+    <!-- sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header id="heading">
+        <h1><b>MY POST CRUD APP</b></h1>
+    </header>
+
+    <div id="formContainer">
+        <form id="form" class="form">
+            <label for="title">Title :</label>
+            <input type="text" name="title" id="title" class="titleForm" placeholder="Enter Your Title" required>
+            <br>
+            <label for="text">Text :</label>
+            <input type="text" name="text" id="text" class="titleForm" placeholder="Enter Your Text" required>
+            <br>
+            <!-- <input type="submit" id="btn" class="btn"> -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="editFormDiv" class="editFormDiv">
+        <span class="cross" id="cross"><i class="bi bi-x-lg"></i></span>
+        <form id="editForm" class="editForm">
+            <label for="title">Title :</label>
+            <input type="text" name="title" id="editFormTitle" class="editFormInput" placeholder="Enter Your Title"
+                required>
+            <br>
+            <label for="text">Text :</label>
+            <input type="text" name="text" id="editFormText" class="editFormInput" placeholder="Enter Your Text"
+                required>
+            <br>
+            <!-- <input type="submit" id="editFormBtn" class="editFormEdit"> -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <section id="postContainer" class="postContainer"></section>
+
+    <script type="module" src="app.js"></script>
+    <!-- Axios Link -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
+
+    <!-- bootstrap link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

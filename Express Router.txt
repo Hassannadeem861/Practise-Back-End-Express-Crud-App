@@ -1,0 +1,7 @@
+Routing, application ke endpoints (URIs), client requests ka jawab kaise dete hain, usko refer karta hai. Routing ki samajh ke liye, Basic routing dekhein.
+
+Aap Express app object ke methods ka istemal karke routing define karte hain, jo HTTP methods ke liye hai;
+ jaise, app.get() GET requests handle karne ke liye aur app.post() 
+POST requests handle karne ke liye. Ek puri list ke liye, app.METHOD dekhein. Aap app.all()
+ bhi istemal kar sakte hain, jisse saare HTTP methods handle ho sakte hain, aur app.use()
+ middleware ko specify karne ke liye callback function ke taur par (Details ke liye Using middleware dekhein).
