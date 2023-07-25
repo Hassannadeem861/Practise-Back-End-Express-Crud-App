@@ -1,9 +1,10 @@
-<!-- <label> ke for attribute missing hain: <label> tag ke liye for attribute define karna chahiye taaki jab bhi koi label par click kare, uss field mein focus ho jaaye. Is code mein for attribute missing hai, isko sahi karna hai.
- event argument missing hai function calls mein: onload="getAllPost(event)" aur onsubmit="createPost(event); return false" mein event argument missing hai. -->
-<!-- Is sahi kiye gaye code mein <label> ke for attribute ko postTitle aur postText fields ke saath set kiya gaya hai. Ab aapke web page par posts create karne aur dikhaane ka sahi tarika hona chahiye. -->
+<!-- Axios: Yahaan par Axios library ko link kiya gaya hai. Axios ek popular JavaScript library hai jo HTTP requests ko -->
+<!-- handle karne mein madad karti hai. Iska use server se data fetch karne (GET requests), data bhejne (POST requests), data -->
+<!-- update karne (PUT requests), aur data delete karne (DELETE requests) mein hota hai. -->
 
+<!-- CRUD Operations: App.js mein CRUD operations (Create, Read, Update, Delete) ke liye code implement karen, jisse posts -->
+<!-- display, create, edit, aur delete kiya ja sake. -->
 
-<!-- CHATGPT CODE -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +48,7 @@
     <br>
     <br>
 
-    
+
     <section id="postContainer" class="postContainer"></section>
     <div id="editFormDiv" class="editFormDiv">
         <span class="cross" id="cross"><i class="bi bi-x-lg"></i></span>
@@ -66,7 +67,7 @@
     </div>
 
     <span id="alertBox" class="alertBox"></span>
-   
+
     <script type="module" src="app.js"></script>
     <!-- Axios Link -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>

@@ -4,8 +4,8 @@ console.log("Hello World Server Silde Javascript");
 
 import express from 'express';
 import path from "path"
-import apiv1Router from "./apiv1/index.mjs"
-import apiv2Router from "./apiv2/index.mjs"
+import apiv1 from "./apiv1/index.mjs"
+import apiv2 from "./apiv2/index.mjs"
 
 
 const app = express()
@@ -15,8 +15,8 @@ app.use(express.json()); //body parse
 
 
 // app.use(authRouter)
-app.use("/api/v1/", apiv1)
-app.use("/api/v2/", apiv2)
+app.use("/api/v1", apiv1)
+app.use("/api/v2", apiv2)
 
 
 //    /static/vscode_windows,exe
